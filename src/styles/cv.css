@@ -1,0 +1,41 @@
+@import './app.css';
+
+.cvSide {
+  padding: 2em 3em;
+  background-color: var(--bg-main);
+  flex: 1;
+}
+
+.cv {
+  background-color: var(--cv-bg);
+  max-width: 70em;
+  min-width: 60em;
+  min-height: 38em;
+  padding: 2em;
+}
+
+.cvTitle {
+  text-align: center;
+}
+
+.pTitle,
+.objTitle,
+.edTitle,
+.expTitle {
+  border-bottom: solid 1px black;
+}
+
+.pData {
+  display: flex;
+  justify-content: space-between;
+}
+
+.imgPlaceholder {
+  width: 12em;
+  height: 8em;
+  border-radius: 10px;
+  background-color: var(--panel-bg);
+  display: grid;
+  place-content: center;
+  user-select: none;
+}

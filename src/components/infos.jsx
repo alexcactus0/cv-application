@@ -1,79 +1,116 @@
 import { useState } from 'react';
 import '../styles/infos.css';
 
-function InfoSide() {
+function InfoSide({ data, onChange }) {
   const [currentCard, setCard] = useState('general');
 
   return (
-    <div className="infosCon">
-      <div className="infosTitle">
+    <aside className="infosCon">
+      <header className="infosTitle title">
         <h1>CV-Application</h1>
+      </header>
+
+      <div className="cardArea">
+        {currentCard === 'general' && (
+          <GeneralInfos data={data} onChange={onChange} />
+        )}
+        {currentCard === 'objective' && <Objective />}
+        {currentCard === 'education' && <Education />}
+        {currentCard === 'experience' && <Experience />}
+        {currentCard === 'profImg' && <ProfileImg />}
+        {currentCard === 'exportCv' && <ExportCv />}
       </div>
 
-      {currentCard === 'general' && <GeneralInfos />}
-      {currentCard === 'objective' && <Objective />}
-      {currentCard === 'education' && <Education />}
-      {currentCard === 'skills' && <Skills />}
-      {currentCard === 'profImg' && <ProfileImg />}
-      {currentCard === 'exportCv' && <ExportCv />}
+      <nav className="form-nav">
+        {steps.map((step) => {
+          const isActive = currentCard === step.id;
 
-      <nav>
-        <button onClick={() => setCard('general')}>General</button>
-        <button onClick={() => setCard('objective')}>Objective</button>
-        <button onClick={() => setCard('education')}>Education</button>
-        <button onClick={() => setCard('skills')}>Skills</button>
-        <button onClick={() => setCard('profImg')}>Upload</button>
-        <button onClick={() => setCard('exportCv')}>Download</button>
+          return (
+            <button
+              key={step.id}
+              className={`nav-item ${isActive ? 'active' : ''}`}
+              onClick={() => setCard(step.id)}
+            >
+              {isActive ? (
+                <span className="nav-label">{step.label}</span>
+              ) : (
+                <span className="nav-dot" />
+              )}
+            </button>
+          );
+        })}
       </nav>
-    </div>
+    </aside>
   );
 }
 
-function GeneralInfos() {
+const steps = [
+  { id: 'general', label: 'General' },
+  { id: 'objective', label: 'Objective' },
+  { id: 'education', label: 'Education' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'profImg', label: 'Upload' },
+  { id: 'exportCv', label: 'Download' },
+];
+
+function GeneralInfos({ data, onChange }) {
   return (
     <div className="generalInfos">
-      <div className="generalTitle">
+      <div className="generalTitle title">
         <h2>General Information</h2>
       </div>
       <div className="userName user">
-        <Label name="Name: " forIn="name" />
-        <Input type="text" placeholder="John Doe.." id="name" name="name" />
-      </div>
-      <div className="userAddress user">
-        <Label name="Address: " forIn="address" />
+        <Label name="Name *" forIn="name" />
         <Input
           type="text"
-          placeholder="e.g. Example Street 12, City, 12345"
+          placeholder="John Doe.."
+          id="name"
+          name="name"
+          value={data.name}
+          onChange={onChange}
+        />
+      </div>
+      <div className="userAddress user">
+        <Label name="Address *" forIn="address" />
+        <Input
+          type="text"
+          placeholder="e.g. Example Street 12, City"
           id="address"
           name="address"
+          value={data.address}
+          onChange={onChange}
         />
       </div>
       <div className="userPhone user">
-        <Label name="Phone Number: " forIn="contact" />
+        <Label name="Phone Number *" forIn="contact" />
         <Input
           type="number"
           placeholder="e.g. 0123 456 789"
           id="contact"
           name="contact"
+          value={data.contact}
+          onChange={onChange}
         />
       </div>
       <div className="userEmail user">
-        <Label name="Email Address: " forIn="email" />
+        <Label name="Email Address *" forIn="email" />
         <Input
           type="email"
           placeholder="email@example.com"
           id="email"
           name="email"
+          value={data.address}
+          onChange={onChange}
         />
       </div>
     </div>
   );
 }
 
-function Objective() {
+function Objective({ data, onChange }) {
   return (
     <div className="objective">
-      <div className="objTitle">
+      <div className="objTitle title">
         <h2>Objective</h2>
       </div>
       <div className="objText">
@@ -82,16 +119,18 @@ function Objective() {
           name="infos"
           id="infos"
           placeholder="Describe your goal or objective here"
+          value={data.objective}
+          onChange={onChange}
         />
       </div>
     </div>
   );
 }
 
-function Education() {
+function Education({ data, onChange }) {
   return (
     <div className="education">
-      <div className="edTitle">
+      <div className="edTitle title">
         <h2>Education</h2>
       </div>
       <div className="edLevel ed">
@@ -113,6 +152,8 @@ function Education() {
           placeholder="e.g. High School Name"
           id="schoolTitle"
           name="schoolTitle"
+          value={data.education.schoolName}
+          onChange={onChange}
         />
       </div>
 
@@ -123,6 +164,8 @@ function Education() {
           placeholder="e.g. School Street 12, City, 12345"
           id="schoolAddress"
           name="schoolAddress"
+          value={data.education.schoolAddress}
+          onChange={onChange}
         />
       </div>
 
@@ -149,18 +192,18 @@ function Education() {
   );
 }
 
-function Skills() {
+function Experience() {
   return (
-    <div className="skills">
-      <div className="skTitle">
-        <h2>Skills</h2>
+    <div className="experience">
+      <div className="expTitle title">
+        <h2>Experience</h2>
       </div>
-      <div className="skInputs">
-        <Label name="Skills *" forIn="skills" />
+      <div className="expInputs">
+        <Label name="Experience *" forIn="exp" />
         <Textarea
-          name="skills"
-          id="skills"
-          placeholder="e.g. Communication, Teamwork, Problem-solving"
+          name="exp"
+          id="exp"
+          placeholder="e.g. Worked at a (Company name)..."
         />
       </div>
     </div>
@@ -187,7 +230,7 @@ function ProfileImg() {
 function ExportCv() {
   return (
     <div className="exportCv">
-      <div className="exTitle">
+      <div className="exTitle title">
         <h2>Download CV</h2>
       </div>
       <div className="export">
@@ -206,12 +249,29 @@ function Label({ name, forIn }) {
   return <label for={forIn}>{name}</label>;
 }
 
-function Input({ type, placeholder, id, name }) {
-  return <input type={type} placeholder={placeholder} id={id} name={name} />;
+function Input({ type, placeholder, id, name, value, onChange }) {
+  return (
+    <input
+      type={type}
+      placeholder={placeholder}
+      id={id}
+      name={name}
+      value={value}
+      onChange={onChange}
+    />
+  );
 }
 
-function Textarea({ name, id, placeholder }) {
-  return <textarea name={name} id={id} placeholder={placeholder}></textarea>;
+function Textarea({ name, id, placeholder, value, onChange }) {
+  return (
+    <textarea
+      name={name}
+      id={id}
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+    ></textarea>
+  );
 }
 
-export { InfoSide };
+export { InfoSide, GeneralInfos };

@@ -1,3 +1,10 @@
+@import './app.css';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 @font-face {
   font-family: 'roboto';
   src: url('../fonts/Roboto-Regular.ttf');
@@ -5,40 +12,190 @@
 
 body {
   font-family: 'roboto';
+  height: 100vh;
+  background-color: var(--bg-main);
+  display: flex;
+  justify-content: center;
 }
 
 .infosCon {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 3em 32.5em 10em;
+  background-color: var(--panel-bg);
+  justify-items: center;
   align-items: center;
-  gap: 10px;
-  padding: 1em 2em;
-  border: solid 1px black;
+  gap: 15px;
+  padding: 1em 2em 0;
+  flex: 1;
+  max-width: 20em;
+}
+
+.title {
+  color: var(--text-primary);
 }
 
 .generalInfos,
 .objective,
 .education,
-.skills,
+.experience,
 .profileImg,
 .exportCv {
   display: grid;
   grid-template-rows: repeat(4, 3em);
-  gap: 1em;
+  gap: 2em;
   max-width: 15em;
-  background-color: aqua;
-  padding: 0.5em 3em;
+  width: 100%;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 1.5em 2em;
+  color: var(--text-secondary);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
 }
 
-.hidden {
-  display: none;
+.cardArea {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
 }
 
-.user {
+.user,
+.export {
   display: flex;
   flex-direction: column;
 }
 
-input {
-  width: 17em;
+a {
+  text-decoration: none;
+  color: var(--panel-bg);
+}
+
+.export {
+  gap: 1em;
+}
+
+.export button {
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: none;
+  background-color: var(--accent);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+}
+
+.export button:hover {
+  background-color: #3b61d1;
+  transform: translateY(-1px);
+}
+
+.export button:active {
+  transform: translateY(1px);
+}
+
+.export button:disabled {
+  background-color: #c0c4d9;
+  cursor: not-allowed;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  background-color: #fff;
+  color: var(--text-primary);
+  font-family: 'roboto';
+  font-size: 0.9rem;
+  outline: none;
+  transition:
+    border 0.2s,
+    box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+::placeholder {
+  color: var(--text-muted);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(79, 124, 255, 0.2);
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Cpath fill='none' stroke='%236b7280' stroke-width='1.5' d='M1 3l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px 10px;
+  padding-right: 32px;
+  cursor: pointer;
+}
+
+textarea {
+  max-height: 14em;
+  min-height: 8em;
+  resize: vertical;
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+  background-color: #f5f6fa;
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.form-nav {
+  display: flex;
+  justify-content: center;
+  padding: 14px;
+  background: var(--panel-bg);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.nav-item {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+.nav-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1f2937;
+  border: none;
+}
+
+.nav-item.active {
+  width: auto;
+  padding: 0 14px;
+
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.nav-label {
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 550;
+  white-space: nowrap;
 }

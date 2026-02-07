@@ -1,4 +1,17 @@
-#root {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+:root {
+  --bg-main: #f6f7fb;
+  --cv-bg: #ffffff;
+  --panel-bg: #f1f3f8;
+  --card-bg: #fafbff;
+  --card-border: rgba(0, 0, 0, 0.06);
+  --text-primary: #1f2937; /* titles */
+  --text-secondary: #6b7280; /* labels, hints */
+  --text-muted: #9ca3af;
+  --accent: #4f7cff;
 }
+
+/* #root {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  height: 100%;
+} */
