@@ -1,5 +1,10 @@
 @import './app.css';
 
+@font-face {
+  font-family: 'robbold';
+  src: url(../fonts/Roboto-SemiBold.ttf);
+}
+
 .cvSide {
   padding: 2em 3em;
   background-color: var(--bg-main);
@@ -28,14 +33,35 @@
 .pData {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.pwrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .imgPlaceholder {
   width: 12em;
-  height: 8em;
+  height: 12em;
   border-radius: 10px;
-  background-color: var(--panel-bg);
   display: grid;
   place-content: center;
   user-select: none;
+  overflow: hidden;
+}
+
+p {
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.ctitle {
+  font-size: 1.15em;
+}
+
+.targets {
+  font-family: 'robbold';
 }

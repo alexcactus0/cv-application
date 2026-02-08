@@ -1,4 +1,3 @@
-import { GeneralInfos } from './components/infos';
 import { InfoSide } from './components/infos';
 import { CV } from './components/cv';
 
@@ -13,13 +12,16 @@ function App() {
     contact: '',
     email: '',
     objective: '',
-    education: {
-      schoolName: '',
-      schoolAddress: '',
-      schoolYear: '',
-    },
+    edLevel: '',
+    schoolName: '',
+    schoolAddress: '',
+    schoolYear: '',
+    edStatus: '',
     experience: '',
   });
+
+  const [imagePreview, setImagePreview] = useState('');
+  const [imageError, setImageError] = useState('');
 
   // update function
   const handleChange = (e) => {
@@ -32,8 +34,14 @@ function App() {
 
   return (
     <>
-      <InfoSide data={userData} onChange={handleChange} />
-      <CV data={userData} />
+      <InfoSide
+        data={userData}
+        onChange={handleChange}
+        setImagePreview={setImagePreview}
+        setImageError={setImageError}
+        imageError={imageError}
+      />
+      <CV data={userData} imagePreview={imagePreview} />
     </>
   );
 }
