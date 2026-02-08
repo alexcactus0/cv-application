@@ -13,7 +13,11 @@ function App() {
     contact: '',
     email: '',
     objective: '',
-    education: '',
+    education: {
+      schoolName: '',
+      schoolAddress: '',
+      schoolYear: '',
+    },
     experience: '',
   });
 

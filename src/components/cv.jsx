@@ -24,13 +24,13 @@ function CV({ data }) {
         <section className="objData">
           <p className="objTitle">Objective</p>
           <br />
-          <p className="objText"></p>
+          <p className="objText">{data.objective}</p>
           <br />
         </section>
         <section className="edData">
           <p className="edTitle">Educational Background</p>
           <br />
-          <p className="edText"></p>
+          <p className="edText">{data.education.schoolName}</p>
           <br />
         </section>
         <section className="expData">

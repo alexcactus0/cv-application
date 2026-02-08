@@ -14,9 +14,15 @@ function InfoSide({ data, onChange }) {
         {currentCard === 'general' && (
           <GeneralInfos data={data} onChange={onChange} />
         )}
-        {currentCard === 'objective' && <Objective />}
-        {currentCard === 'education' && <Education />}
-        {currentCard === 'experience' && <Experience />}
+        {currentCard === 'objective' && (
+          <Objective data={data} onChange={onChange} />
+        )}
+        {currentCard === 'education' && (
+          <Education data={data} onChange={onChange} />
+        )}
+        {currentCard === 'experience' && (
+          <Experience data={data} onChange={onChange} />
+        )}
         {currentCard === 'profImg' && <ProfileImg />}
         {currentCard === 'exportCv' && <ExportCv />}
       </div>
@@ -99,7 +105,7 @@ function GeneralInfos({ data, onChange }) {
           placeholder="email@example.com"
           id="email"
           name="email"
-          value={data.address}
+          value={data.email}
           onChange={onChange}
         />
       </div>
@@ -114,10 +120,10 @@ function Objective({ data, onChange }) {
         <h2>Objective</h2>
       </div>
       <div className="objText">
-        <Label name="Objective *" forIn="infos" />
+        <Label name="Objective *" forIn="objective" />
         <Textarea
-          name="infos"
-          id="infos"
+          name="objective"
+          id="objective"
           placeholder="Describe your goal or objective here"
           value={data.objective}
           onChange={onChange}
@@ -146,12 +152,12 @@ function Education({ data, onChange }) {
       </div>
 
       <div className="schoolName ed">
-        <Label name="School Name *" forIn="schoolTitle" />
+        <Label name="School Name *" forIn="schoolName" />
         <Input
           type="text"
           placeholder="e.g. High School Name"
-          id="schoolTitle"
-          name="schoolTitle"
+          id="schoolName"
+          name="schoolName"
           value={data.education.schoolName}
           onChange={onChange}
         />
@@ -176,6 +182,8 @@ function Education({ data, onChange }) {
           placeholder="e.g. 2025/2026"
           id="schoolYear"
           name="schoolYear"
+          value={data.education.schoolYear}
+          onChange={onChange}
         />
       </div>
 
@@ -192,18 +200,20 @@ function Education({ data, onChange }) {
   );
 }
 
-function Experience() {
+function Experience({ data, onChange }) {
   return (
     <div className="experience">
       <div className="expTitle title">
         <h2>Experience</h2>
       </div>
       <div className="expInputs">
-        <Label name="Experience *" forIn="exp" />
+        <Label name="Experience *" forIn="experience" />
         <Textarea
-          name="exp"
-          id="exp"
+          name="experience"
+          id="experience"
           placeholder="e.g. Worked at a (Company name)..."
+          value={data.experience}
+          onChange={onChange}
         />
       </div>
     </div>
