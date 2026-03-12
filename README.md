@@ -25,3 +25,6 @@ The application is organized into reusable components stored in a `components` d
 
 ## Purpose
 The main purpose of this project was to practice fundamental React concepts by building a small interactive application.
+
+## Deployed
+Deployed on Netlify under the following link: **cv-application1231.netlify.app**
