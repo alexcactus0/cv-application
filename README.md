@@ -1,16 +1,27 @@
-# React + Vite
+# React CV Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+This project is a simple CV builder built with React. Users can enter their personal information, education, and work experience to generate a basic CV layout.
 
-Currently, two official plugins are available:
+The goal of this project was to practice core React concepts such as component structure, state management, and passing data through props.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- Add general information (name, email, phone number)
+- Add education details (school, title of study, dates)
+- Add work experience (company, position, responsibilities, dates)
+- Add an image of yourself
+- Submit information to display it as a CV
+- Edit previously submitted information
+- Download CV as pdf
 
-## React Compiler
+## React Concepts Used
+- Component-based structure
+- useState for managing form data
+- Props for passing data between components
+- Conditional rendering for editing and displaying information
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Project Structure
+The application is organized into reusable components stored in a `components` directory, with styles kept separately in a `styles` directory.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Purpose
+The main purpose of this project was to practice fundamental React concepts by building a small interactive application.
